@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<ArrayOfContact xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Contact>
+    <Name>Joe</Name>
+    <Number>0707070707</Number>
+  </Contact>
+  <Contact>
+    <Name>Aly</Name>
+    <Number>0808080808</Number>
+  </Contact>
+</ArrayOfContact>
