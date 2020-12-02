@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "7LrVoDbL4vmAsNhi8iCDHtfCc0bDF8XBuvwsY7wzvhJvtOrrVB+rijPLbBT/kZEAGYjD4mbT6G+oimn1oM+6PQ==",
+  "success": true,
+  "projectFilePath": "/home/pixidream/Documents/development/cfa-license/dev/c#/voice-assistant/voice-assistant.csproj",
+  "expectedPackageFiles": [
+    "/home/pixidream/.nuget/packages/microsoft.cognitiveservices.speech/1.14.0/microsoft.cognitiveservices.speech.1.14.0.nupkg.sha512"
+  ],
+  "logs": []
+}
