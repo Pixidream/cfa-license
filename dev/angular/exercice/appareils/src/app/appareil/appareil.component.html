@@ -1,0 +1,15 @@
+<li class="list-group-item">
+  <h4 [ngStyle]="{color: getColor()}">Appareil: {{ appareilName }}</h4>
+  <div class="form-inline">
+    <input type="text" class="form-control" [(ngModel)]="appareilName" [disabled]="appareilStatus === 'allumé'">
+    <button class="btn btn-primary btn-sm ml-2" (click)="onModifierOne({id: appareilId, name: appareilName})" [disabled]="appareilStatus === 'allumé'">Modifier</button>
+  </div>
+  <div class="d-flex align-items-center">
+    <button *ngIf="appareilStatus === 'éteint' " class=" mt-3 btn btn-primary btn-sm" (click)="onAllumerOne(appareilId)">Allumer</button>
+    <button class="btn btn-danger mt-3 btn-sm" *ngIf="appareilStatus === 'allumé'" (click)="onEteindreOne(appareilId)">Eteindre</button>
+    <button [disabled]="appareilStatus === 'allumé'" class="btn btn-danger mt-3 btn-sm ml-2" (click)="onSupprimerOne(appareilId)">
+      <fa-icon [icon]="faTrash"></fa-icon>
+    </button>
+    <small class="text-muted mt-3 ml-auto">Status: <div class="spinner-grow spinner-grow-sm text-{{appareilStatus === 'allumé' ? 'success' : 'danger'}}"></div></small>
+  </div>
+</li>

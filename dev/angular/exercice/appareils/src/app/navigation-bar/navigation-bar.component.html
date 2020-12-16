@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a routerLink="/" class="navbar-brand">
+    <img src="../../assets/img/logo.png" alt="brand logo" class="d-inline-block align-top" width="30" height="30">
+    THOS
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavbar"
+    aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="mainNavbar">
+    <ul class="navbar-nav mr-auto">
+      <li class="navitem">
+        <a routerLink="/add" class="nav-link">Add Item</a>
+      </li>
+    </ul>
+    <div class="my-2 my-lg-0 form-inline" *ngIf="isAuth()">
+      <div class="user form-inline mr-3">
+        <p class="mr-3 mt-3 text-light">{{userData.email}}</p>
+        <div style="height: 30px; width: 30px; border-radius: 50%">
+          <img src="{{ userData.photoURL }}" alt="test" height="30" width="30" style="border-radius: 50%">
+        </div>
+      </div>
+      <button class="btn btn-danger" (click)="handleLogout()">Logout</button>
+    </div>
+  </div>
+</nav>

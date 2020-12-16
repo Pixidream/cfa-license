@@ -1,0 +1,24 @@
+<!-- <div *ngIf="auth.user$ | async; then authenticated else guest"> -->
+  <!-- template will replace this div -->
+<!-- </div> -->
+
+<!-- User NOT logged in -->
+<!-- <ng-template #guest>
+  <h3>Howdy, GUEST</h3>
+  <p>Login to get started...</p>
+
+  <button (click)="auth.googleSignin()">
+    <i class="fa fa-google"></i> Connect Google
+  </button>
+
+</ng-template> -->
+
+<div style="height: calc(100vh - 56px); width: 100vw; background-image: url(../../assets/img/mountain.jpg);background-position: center;background-repeat: no-repeat;background-size: cover; display: flex; justify-content: center; align-items: center;">
+  <div class="card" style="width: 25rem; min-height: 12.5rem;">
+    <h1 class="text-center">Login to Thos</h1>
+    <a type="button" class="btn btn-light m-auto" style="width: 80%;" (click)="auth.googleSignin()"ng>
+      <img src="../../assets/img/google.png" alt="brand logo" class="d-inline-block align-top" width="22" height="22">
+      Login With Google
+    </a>
+  </div>
+</div>
