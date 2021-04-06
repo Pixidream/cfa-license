@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">AppContact</string>
+
+    <string name="title_contact">Details Contact</string>
+    <string name="field_lastname">Lastname</string>
+    <string name="hint_lastname">Name</string>
+    <string name="field_firstname">FirstName</string>
+    <string name="hint_firstname">FirstName</string>
+    <string name="field_email">Email</string>
+    <string name="hint_email">Email</string>
+    <string name="field_mobile">Mobile</string>
+    <string name="hint_mobile">Mobile</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="btn_submit">Submit</string>
+    <string name="btn_add_contact">New contact</string>
+    <string name="contact_firstname">Firstname</string>
+    <string name="contact_lastname">Lastname</string>
+    <string name="contact_imageview_description">Contact Icon</string>
+</resources>

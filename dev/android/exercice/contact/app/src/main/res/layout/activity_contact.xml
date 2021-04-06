@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="vertical"
+  tools:context=".MainActivity">
+
+  <TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:gravity="center"
+    android:text="@string/title_contact"
+    android:textColor="@color/purple_200"
+    android:textSize="28sp" />
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:orientation="horizontal">
+
+    <TextView
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:text="@string/field_lastname" />
+
+    <EditText
+      android:id="@+id/editTextLastName"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="3"
+      android:ems="10"
+      android:hint="@string/hint_lastname"
+      android:importantForAutofill="no"
+      android:inputType="textPersonName" />
+  </LinearLayout>
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:orientation="horizontal">
+
+    <TextView
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:text="@string/field_firstname" />
+
+    <EditText
+      android:id="@+id/editTextFirstName"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="3"
+      android:ems="10"
+      android:hint="@string/hint_firstname"
+      android:importantForAutofill="no"
+      android:inputType="textPersonName" />
+  </LinearLayout>
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:orientation="horizontal">
+
+    <TextView
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:text="@string/field_email" />
+
+    <EditText
+      android:id="@+id/editTextEmail"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="3"
+      android:autofillHints=""
+      android:ems="10"
+      android:hint="@string/hint_email"
+      android:inputType="textEmailAddress" />
+  </LinearLayout>
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:orientation="horizontal">
+
+    <TextView
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:text="@string/field_mobile" />
+
+    <EditText
+      android:id="@+id/editTextMobile"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="3"
+      android:ems="10"
+      android:hint="@string/hint_mobile"
+      android:importantForAutofill="no"
+      android:inputType="phone" />
+  </LinearLayout>
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <Button
+      android:id="@+id/button"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:backgroundTint="#E91E63"
+      android:text="@string/btn_cancel"
+      app:icon="@android:drawable/ic_menu_close_clear_cancel"
+      android:layout_marginEnd="5dp"
+      tools:ignore="ButtonStyle" />
+
+    <Button
+      android:id="@+id/button2"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:text="@string/btn_submit"
+      android:textAlignment="center"
+      app:icon="@android:drawable/ic_menu_send"
+      app:iconTintMode="src_atop"
+      android:layout_marginStart="5dp"
+      tools:ignore="ButtonStyle" />
+  </LinearLayout>
+
+</LinearLayout>
