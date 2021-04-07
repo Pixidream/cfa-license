@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:orientation="vertical"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ImageView
+      android:id="@+id/imageViewMusicDetailPicture"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:adjustViewBounds="true"
+      android:cropToPadding="false"
+      android:maxHeight="300dp"
+      android:minHeight="300dp"
+      />
+  </LinearLayout>
+
+  <TextView
+    android:id="@+id/textViewMusicDetailsTitle"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingVertical="10dp"
+    android:text="Title"
+    android:textAlignment="center"
+    android:textSize="30sp"
+    android:layout_marginTop="20dp"/>
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginTop="20dp">
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      android:layout_marginVertical="15dp"
+      android:paddingHorizontal="15dp">
+
+      <TextView
+        android:id="@+id/textViewMusicDetailsArtiste"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:paddingVertical="5dp"
+        android:text="Artiste: "
+        android:textSize="18sp" />
+
+      <TextView
+        android:id="@+id/textViewMusicDetailsArtisteContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="15"
+        android:text="René la taupe"
+        android:textSize="18sp"
+        android:paddingVertical="5dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      android:layout_marginVertical="15dp"
+      android:paddingHorizontal="15dp">
+
+      <TextView
+        android:id="@+id/textViewMusicDetailsAlbum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Album:"
+        android:textSize="18sp"
+        android:paddingVertical="5dp"/>
+
+      <TextView
+        android:id="@+id/textViewMusicDetailsAlbumContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="15"
+        android:text="Top hit de l'été 2000"
+        android:textSize="18sp"
+        android:paddingVertical="5dp" />
+    </LinearLayout>
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      android:layout_marginVertical="15dp"
+      android:paddingHorizontal="15dp">
+
+      <TextView
+        android:id="@+id/textViewMusicDetailsFavoris"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Favoris: "
+        android:textSize="18sp"
+        android:paddingVertical="5dp" />
+
+      <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/switchMusicDetailsFavoris"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="15"
+        android:backgroundTint="#512DA8"
+        android:buttonTint="#512DA8"
+        android:drawableTint="#512DA8"
+        android:foregroundTint="#512DA8"
+        android:paddingVertical="5dp"
+        android:rotationY="180"
+        android:splitTrack="false"
+        android:switchTextAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textAlignment="gravity"
+        android:textColorHighlight="#512DA8"
+        android:textColorLink="#512DA8"
+        android:textSize="18sp"
+        android:thumbTint="#512DA8"
+        android:trackTint="#B2512DA8"
+        app:thumbTint="#512DA8"
+        app:trackTint="#B2512DA8" />
+    </LinearLayout>
+  </LinearLayout>
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginTop="20dp"
+    android:paddingHorizontal="15dp">
+
+    <Button
+      android:id="@+id/buttonMusicDetailListen"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:text="Play"
+      android:layout_marginRight="10dp"/>
+
+    <Button
+      android:id="@+id/buttonMusicDetailDeezer"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:text="Voir sur Deezer"
+      android:layout_marginLeft="10dp"/>
+  </LinearLayout>
+</LinearLayout>
