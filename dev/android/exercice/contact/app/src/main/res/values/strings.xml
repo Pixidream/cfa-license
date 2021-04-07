@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AppContact</string>
+    <string name="app_name">Hermes Book</string>
 
     <string name="title_contact">Details Contact</string>
     <string name="field_lastname">Lastname</string>
@@ -12,8 +12,14 @@
     <string name="hint_mobile">Mobile</string>
     <string name="btn_cancel">Cancel</string>
     <string name="btn_submit">Submit</string>
+    <string name="btn_delete">Delete</string>
     <string name="btn_add_contact">New contact</string>
     <string name="contact_firstname">Firstname</string>
     <string name="contact_lastname">Lastname</string>
     <string name="contact_imageview_description">Contact Icon</string>
+    <string name="menu_item_details">Details</string>
+    <string name="menu_item_delete">Delete Contact</string>
+    <string name="menu_item_call">Call</string>
+    <string name="menu_item_email">Send an email</string>
+    <string name="launcher_image_desc">App logo</string>
 </resources>

@@ -18,10 +18,11 @@
   </ListView>
 
   <Button
-    android:id="@+id/button3"
+    android:id="@+id/buttonAddContact"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
+    android:layout_marginBottom="20dp"
     android:backgroundTint="#673AB7"
     android:text="@string/btn_add_contact"
     app:icon="@android:drawable/ic_menu_add"

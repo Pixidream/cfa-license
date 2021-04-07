@@ -4,6 +4,7 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
+  android:gravity="center"
   android:orientation="vertical"
   tools:context=".MainActivity">
 
@@ -33,6 +34,7 @@
       android:layout_width="0dp"
       android:layout_height="wrap_content"
       android:layout_weight="3"
+      android:backgroundTint="#512DA8"
       android:ems="10"
       android:hint="@string/hint_lastname"
       android:importantForAutofill="no"
@@ -56,6 +58,7 @@
       android:layout_width="0dp"
       android:layout_height="wrap_content"
       android:layout_weight="3"
+      android:backgroundTint="#512DA8"
       android:ems="10"
       android:hint="@string/hint_firstname"
       android:importantForAutofill="no"
@@ -80,6 +83,7 @@
       android:layout_height="wrap_content"
       android:layout_weight="3"
       android:autofillHints=""
+      android:backgroundTint="#512DA8"
       android:ems="10"
       android:hint="@string/hint_email"
       android:inputType="textEmailAddress" />
@@ -102,6 +106,7 @@
       android:layout_width="0dp"
       android:layout_height="wrap_content"
       android:layout_weight="3"
+      android:backgroundTint="#512DA8"
       android:ems="10"
       android:hint="@string/hint_mobile"
       android:importantForAutofill="no"
@@ -114,26 +119,44 @@
     android:orientation="horizontal">
 
     <Button
-      android:id="@+id/button"
+      android:id="@+id/button_cancel"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
       android:layout_weight="1"
       android:backgroundTint="#E91E63"
       android:text="@string/btn_cancel"
       app:icon="@android:drawable/ic_menu_close_clear_cancel"
-      android:layout_marginEnd="5dp"
       tools:ignore="ButtonStyle" />
 
     <Button
-      android:id="@+id/button2"
+      android:id="@+id/button_save"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
+      android:layout_marginStart="5dp"
       android:layout_weight="1"
       android:text="@string/btn_submit"
       android:textAlignment="center"
       app:icon="@android:drawable/ic_menu_send"
       app:iconTintMode="src_atop"
-      android:layout_marginStart="5dp"
+      tools:ignore="ButtonStyle" />
+
+  </LinearLayout>
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <Button
+      android:id="@+id/button_delete"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:backgroundTint="#E91E63"
+      android:text="@string/btn_delete"
+      android:textAlignment="center"
+      app:icon="@android:drawable/ic_menu_delete"
+      app:iconTintMode="src_atop"
       tools:ignore="ButtonStyle" />
   </LinearLayout>
 
