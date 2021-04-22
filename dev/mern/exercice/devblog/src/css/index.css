@@ -1,0 +1,26 @@
+/* imports fonts */
+@import url('https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+/* import tailwind css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* global css */
+/* page transition */
+.fade-enter {
+    opacity: 0;
+    z-index: 1;
+}
+
+.fade-enter.fade-enter-active {
+    opacity: 1;
+    transition: opacity 250ms ease-in;
+}
+
+/* create custom tailwind components */
+
+.pills {
+  @apply inline-block bg-gray-500 rounded-full px-3 py-1 text-sm font-semibold text-gray-300 mr-2 mb-2 italic h-full;
+}
