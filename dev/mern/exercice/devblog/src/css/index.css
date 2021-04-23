@@ -8,6 +8,10 @@
 @tailwind utilities;
 
 /* global css */
+html, body {
+  background-color: rgba(55, 65, 81, 1);
+}
+
 /* page transition */
 .fade-enter {
     opacity: 0;
@@ -23,4 +27,8 @@
 
 .pills {
   @apply inline-block bg-gray-500 rounded-full px-3 py-1 text-sm font-semibold text-gray-300 mr-2 mb-2 italic h-full;
+}
+
+.full-screen {
+  min-height: calc(100vh - 8rem);
 }

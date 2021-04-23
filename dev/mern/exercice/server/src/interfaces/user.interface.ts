@@ -8,5 +8,5 @@ export interface IUser extends Document {
   pseudo: string;
   email: string;
   password: string;
-  profilePicture: string
+  profilePicture?: string
 }

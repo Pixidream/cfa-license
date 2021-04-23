@@ -10,7 +10,7 @@ import { ApiService } from '../services/api.service'
 import { generateToken } from '../helper/authentication.helper'
 
 // middleware
-import { verifyToken } from '../middlewares/authentication.middleware'
+import { verifyToken, verifyTokenEndpoint } from '../middlewares/authentication.middleware'
 
 // ------ Controller ------
 export class ApiController {
@@ -31,16 +31,24 @@ export class ApiController {
     // register routes
     // ------ posts routes ------
     this.router.route('/posts').get(this.getAllPosts).post(this.addPost)
+    this.router.route('/posts/count').get(this.getPostCount)
     this.router.route('/posts/:id').delete(this.deletePost).put(this.updatePost).get(this.getOnePost)
 
     // ------ categories routes ------
     this.router.route('/categories').get(this.getAllCategories).post(this.addCategory)
+    this.router.route('/categories/count').get(this.getCategoryCount)
     this.router.route('/categories/:id').delete(this.deleteCategory).put(this.updateCategory).get(this.getOneCategory)
 
     // ------ authentication routers ------
     this.router.route('/auth/login').post(this.login)
     this.router.route('/auth/signup').post(this.signup)
     this.router.route('/auth/verify').get(this.checkLogin)
+    this.router.route('/auth/pp').post(this.getPP)
+
+    // ------ users routes ------
+    this.router.route('/users').get(this.getAllUsers)
+    this.router.route('/users/count').get(this.getUserCount)
+    this.router.route('/users/:id').post(this.getOneUser)
   }
 
   // ------ posts logic -------
@@ -97,6 +105,15 @@ export class ApiController {
     }
   }
 
+  private getPostCount = async (req: Request, res: Response) => {
+    try {
+      const postCount = await this.apiService.getPostCount()
+      res.json({ postCount })
+    } catch (e) {
+      res.status(500).send(e.message)
+    }
+  }
+
   // ------ category controller ------
   // retrieve all categories from database
   private getAllCategories = async (_: Request, res: Response) => {
@@ -141,7 +158,7 @@ export class ApiController {
     }
   }
 
-  // get a single post from db
+  // get a single category from db
   private getOneCategory = async (req: Request, res: Response) => {
     try {
       const getCategoryResult = await this.apiService.getOneCategory(req.params.id)
@@ -151,7 +168,16 @@ export class ApiController {
     }
   }
 
-  // authentication logic
+  private getCategoryCount = async (req: Request, res: Response) => {
+    try {
+      const categoryCount = await this.apiService.getCategoryCount()
+      res.json({ categoryCount })
+    } catch (e) {
+      res.status(500).send(e.message)
+    }
+  }
+
+  // ------ authentication logic ------
   private signup = async (req: Request, res: Response) => {
     await bcrypt.hash(req.body.password, 10, async (error: Error, hash: string) => {
       if (error) res.status(500).json(error)
@@ -169,9 +195,10 @@ export class ApiController {
   private login = async (req: Request, res: Response) => {
     try {
       const loginUser = await this.apiService.loginUser(req.body.pseudo)
+      const loginUserWithoutImage = await this.apiService.loginUserWithoutImage(req.body.pseudo)
       await bcrypt.compare(req.body.password, loginUser.password, (error: Error, match: boolean) => {
         if (error) res.status(500).json(error)
-        else if (match) res.status(200).json({ token: generateToken(loginUser), user: loginUser })
+        else if (match) res.status(200).json({ token: generateToken(loginUserWithoutImage), user: loginUser })
         else res.status(403).json({ error: 'password do not match' })
       })
     } catch (e) {
@@ -179,8 +206,44 @@ export class ApiController {
     }
   }
 
+  private getPP = async (req: Request, res: Response) => {
+    try {
+      const profileP = await this.apiService.getProfilePict(req.body.pseudo)
+      res.json({ pp: profileP })
+    } catch (e) {
+      res.status(404).send(e.message)
+    }
+  }
+
   private checkLogin = async (req: Request, res: Response) => {
-    verifyToken(req, res)
-    res.json({ verified: true })
+    verifyTokenEndpoint(req, res)
+  }
+
+  // ------ user controllers ------
+  private getUserCount = async (req: Request, res: Response) => {
+    try {
+      const userCount = await this.apiService.getUserCount()
+      res.json({ userCount })
+    } catch (e) {
+      res.status(500).send(e.message)
+    }
+  }
+
+  private getAllUsers = async (_: Request, res: Response) => {
+    try {
+      const users = await this.apiService.getAllUsers()
+      res.send(users)
+    } catch (e) {
+      res.status(404).send(e.message)
+    }
+  }
+
+  private getOneUser = async (req: Request, res: Response) => {
+    try {
+      const getUserResult = await this.apiService.getOneUser(req.params.id)
+      res.send(getUserResult)
+    }  catch (e) {
+      res.status(404).send(e.message)
+    }
   }
 }

@@ -5,22 +5,26 @@ import { Listbox, Transition } from '@headlessui/react'
 import { CheckIcon, SelectorIcon, XIcon } from '@heroicons/react/outline'
 
 // interfaces
-import { CategoryInterface, SelectCateStateInterface, SelectCatePropsInterface } from '../../interfaces/HomeInterface.interface'
+import { CategoryInterface, SelectCateStateInterface } from '../../interfaces/home.interface'
+import { withStore } from '../../store/Store'
+import { observer } from 'mobx-react'
+
+// store
+import { store } from '../../index'
 
 // ------ component ------
-export class SelectCate extends Component<SelectCatePropsInterface, SelectCateStateInterface> {
-  state: SelectCateStateInterface = {
-    selectedCategory: this.props.categories.find(cate => cate.id === new URLSearchParams(this.props.location.search).get('select_cate')) || null
+// @ts-ignore
+@withStore
+@observer
+export class SelectCate extends Component<any, SelectCateStateInterface> {
+
+  componentDidMount () {
+    store.fetchCate()
   }
 
+
   setSelectedCategory = (value: CategoryInterface) => {
-    this.setState({
-      selectedCategory: value
-    })
-    const params = new URLSearchParams()
-    if (value) params.append('select_cate', value.id)
-    else params.delete('select_cate')
-    this.props.history.push({ search: params.toString() })
+    store.setSelectedCate(value)
   }
 
   classNames = (...classes: string[]) => {
@@ -28,41 +32,38 @@ export class SelectCate extends Component<SelectCatePropsInterface, SelectCateSt
   }
 
   renderCatIcon = () => {
-    if (this.state.selectedCategory?.icon) return (<img src={ this.state.selectedCategory?.icon } alt="categorie icon" className="flex-shrink-0 h-6 w-6 rounded-full"/>)
+    if (store.selectedCate?.icon) return (<img src={ store.selectedCate?.icon } alt="categorie icon" className="flex-shrink-0 h-6 w-6 rounded-full"/>)
     else return (<div className="flex-shrink-0 h-6 w-6 rounded-full bg-gray-600 animate-pulse" />)
-  }
-
-  clearSelected = (e: any) => {
-    e.stopPropagation()
-    this.setState({
-      selectedCategory: null
-    })
-    const params = new URLSearchParams()
-    params.delete('select_cate')
-    this.props.history.push({ search: params.toString() })
   }
 
   render () {
     return (
-      <Listbox value={ this.state.selectedCategory } onChange={ this.setSelectedCategory }>
+      <Listbox value={ store.selectedCate } onChange={ this.setSelectedCategory }>
         {({ open }) => (
           <>
             <Listbox.Label className="block text-sm font-medium text-white">Filter by categories: </Listbox.Label>
             <div className="mt-1 relative">
-              <Listbox.Button
-                className={ this.classNames(open ? 'rounded-t-md' : 'rounded-md', 'relative w-52 bg-gray-500 shadow-sm pl-3 pr-10 py-2 text-left text-white cursor-default focus:outline-none focus:ring-1 focus:ring-gray-300 focus:border-gray-300 sm:text-sm') }
-              >
-                <span className="flex items-center">
-                  { this.renderCatIcon() }
-                  <span className="ml-3 block truncate">{ this.state.selectedCategory?.name || 'Categories' }</span>
-                </span>
-                <span className="ml-3 absolute inset-y-0 right-5 flex items-center pr-2 pointer-events-none" onClick={ this.clearSelected }>
-                  <XIcon className="h-5 w-5 text-white" />
-                </span>
-                <span className="ml-3 absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-                  <SelectorIcon className="h-5 w-5 text-white" />
-                </span>
-              </Listbox.Button>
+              <div className="flex">
+                <Listbox.Button
+                  className={ this.classNames(open ? 'rounded-tl-md' : 'rounded-l-md', 'relative w-52 bg-gray-500 shadow-sm pl-3 pr-10 py-2 text-left text-white cursor-default focus:outline-none focus:ring-1 focus:ring-gray-300 focus:border-gray-300 sm:text-sm') }
+                >
+                  <span className="flex items-center">
+                    { this.renderCatIcon() }
+                    <span className="ml-3 block truncate">{ store.selectedCate?.name || 'Categories' }</span>
+                  </span>
+                  <span className="ml-3 absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+                    <SelectorIcon className="h-5 w-5 text-white" />
+                  </span>
+                </Listbox.Button>
+                <div
+                  onClick={() => store.setSelectedCate(null)}
+                  className="relative w-8 rounded-r-md bg-gray-500 shadow-sm text-right cursor-pointer text-white cursor-default focus:outline-none focus:ring-1 focus:ring-gray-300 focus:border-gray-300 sm:text-sm"
+                >
+                  <span className="ml-3 absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+                    <XIcon className="h-5 w-5 text-white" />
+                  </span>
+                </div>
+              </div>
               <Transition
                 show={open}
                 enter="transition duration-100 ease-out"
@@ -76,9 +77,9 @@ export class SelectCate extends Component<SelectCatePropsInterface, SelectCateSt
                   static
                   className="absolute w-52 bg-gray-500 shadow-lg max-h-56 rounded-b-md py-1 text-base text-white ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm"
                 >
-                  { this.props.categories.map(cat => (
+                  { store.cate.map((cat: CategoryInterface) => (
                     <Listbox.Option
-                      key={ cat.id }
+                      key={ cat._id }
                       className={ ({ active }) =>
                         this.classNames(
                           active ? 'text-white bg-gray-600' : 'text-white',

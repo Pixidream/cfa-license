@@ -1,6 +1,6 @@
 // ----- imports -------
 // node modules
-import React, { createContext } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom'
 
@@ -8,20 +8,20 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import { AppRouter } from './router/router'
 
 // store
-import { StoreInstance } from './store/Store'
+import Store, { StoreProvider }  from './store/Store'
 
 // style
 import './css/index.css';
 
 // ------- app rendering ------
 // @ts-ignore
-export const StoreContext = createContext()
+export const store = new Store()
 
 ReactDOM.render(
-  <StoreContext.Provider value={StoreInstance}>
+  <StoreProvider store={store}>
     <Router>
       <AppRouter />
     </Router>
-  </StoreContext.Provider>,
+  </StoreProvider>,
   document.getElementById('root')
 );

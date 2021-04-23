@@ -15,7 +15,7 @@ export class ApiService {
     return 'Welcome to REST API'
   }
 
-  // posts services
+  // ------ posts services ------
   public getAllPosts = (): Promise<IPost[]> => Post.find({}).exec()
   public addPost = (post: IPost): Promise<IPost> => new Post(post).save()
   public deletePost = async (id: string) =>  {
@@ -33,8 +33,13 @@ export class ApiService {
     if (!getPost) throw new Error(`Post with id ${id} not found`)
     return getPost
   }
+  public getPostCount = async (): Promise<number> => {
+    const postNumber = await Post.countDocuments().exec()
+    if (!postNumber) throw new Error('Error while retrieving documents count')
+    return postNumber
+  }
 
-  // categories services
+  // ------ categories services ------
   public getAllCategories = (): Promise<ICategory[]> => Category.find({}).exec()
   public addCategory = (category: ICategory): Promise<ICategory> => new Category(category).save()
   public deleteCategory = async (id: string) => {
@@ -52,12 +57,41 @@ export class ApiService {
     if (!getCategory) throw new Error(`Category with id ${id} not found`)
     return getCategory
   }
+  public getCategoryCount = async (): Promise<number> => {
+    const categoryNumber = await Category.countDocuments().exec()
+    if (!categoryNumber) throw new Error('Error while retrieving documents count')
+    return categoryNumber
+  }
 
   // ------ authentication service ------
   public signupUser = async (user: IUser): Promise<IUser> => new User(user).save()
   public loginUser = async (pseudo: string): Promise<IUser> => {
     const getUser: IUser | null = await User.findOne({ pseudo: pseudo }).exec()
     if (!getUser) throw new Error(`User ${pseudo} not found`)
+    return getUser
+  }
+  public loginUserWithoutImage = async (pseudo: string): Promise<any> => {
+    const getUser = await User.findOne({ pseudo }, { profilePicture: 0 }).exec()
+    if (!getUser) throw new Error(`User ${pseudo} not found`)
+    return getUser
+  }
+
+  public getProfilePict = async (pseudo: string): Promise<any> => {
+    const getPP = await User.findOne({ pseudo }, { fullName: 0, pseudo: 0, email: 0, password: 0 }).exec()
+    if (!getPP) throw new Error(`PP for  ${pseudo} not found`)
+    return getPP
+  }
+
+  // ------ users services ------
+  public getUserCount = async (): Promise<number> => {
+    const userNumber = await User.countDocuments().exec()
+    if (!userNumber) throw new Error('Error while retrieving documents count')
+    return userNumber
+  }
+  public getAllUsers = (): Promise<IUser[]> => User.find({}).exec()
+  public getOneUser = async (id: string) => {
+    const getUser: IUser | null = await User.findById(id).exec()
+    if (!getUser) throw new Error(`User with id ${id} not found`)
     return getUser
   }
 }

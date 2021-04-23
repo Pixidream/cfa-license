@@ -26,8 +26,8 @@ class App {
 
   private setConfig = () => {
     this.app.use(morgan('combined'))
-    this.app.use(bodyParser.json({ limit: '50mb' }))
-    this.app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }))
+    this.app.use(bodyParser.json({ limit: '50gb' }))
+    this.app.use(bodyParser.urlencoded({ limit: '50gb', extended: true }))
     this.app.use(cors())
   }
 
